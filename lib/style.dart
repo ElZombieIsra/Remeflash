@@ -11,6 +11,12 @@ TextStyle textStyle = const TextStyle(
   fontWeight: FontWeight.w300,
 );
 
+TextStyle titleStyle = TextStyle(
+  color: Colors.black54,
+  fontSize: 16.0,
+  fontWeight: FontWeight.w500,
+);
+
 TextStyle textMuted({size = 12.0}) => TextStyle(
   color: mutedColor,
   fontSize: size,
@@ -39,8 +45,12 @@ const Color thirdColor = const Color.fromRGBO(16, 124, 121, 1.0);
 const Color mutedColor = Colors.black38;
 const Color textColor = Colors.white;
 
-InputDecoration fieldDecoration({hint = ""}) => InputDecoration(
+InputDecoration fieldDecoration({
+  hint = "",
+  suffixIcon,
+}) => InputDecoration(
   hintText: hint,
+  suffixIcon: suffixIcon,
   border: InputBorder.none,
   contentPadding: EdgeInsets.all(15.0)
 );

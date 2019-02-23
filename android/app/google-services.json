@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "23387057338",
+    "firebase_url": "https://remeflash-8d649.firebaseio.com",
+    "project_id": "remeflash-8d649",
+    "storage_bucket": "remeflash-8d649.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:23387057338:android:f58f914ec83771b0",
+        "android_client_info": {
+          "package_name": "com.example.remeflash"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "23387057338-7m2037b0d0mg4ngdga9nb676f0pasivv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA1636PSzLbPXs0ZteULZmcluFhlKyF9Ao"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

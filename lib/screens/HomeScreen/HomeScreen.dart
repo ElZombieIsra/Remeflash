@@ -4,53 +4,65 @@ import 'package:remeflash/globals.dart' as globals;
 import 'package:remeflash/components/MainDrawer.dart';
 import 'package:remeflash/components/AppBar.dart';
 import 'package:remeflash/components/Body.dart';
+import 'package:remeflash/components/DropDown.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 
 class HomeScreen extends StatefulWidget {
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  var _currentCountry;
+  var _currentCountry = globals.country;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: MainDrawer(),
       appBar: mainAppBar(),
       body: MainBody([
-        Container(
-          padding: EdgeInsets.all(5.0),
-          child: DropdownButtonHideUnderline(
-            child: DropdownButton(
-              value: _currentCountry,
-              items: globals.countrys.map((value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Container(
-                    padding: EdgeInsets.only(left: 10.0),
-                    width: 200.0,
-                    child: Text(value),
-                  ),
-                );
-              }).toList(),
-              hint: Text("Enviar dinero a"),
-              onChanged: (_) {
-                this.setState((){
-                  _currentCountry = _;
-                  globals.country = _;
-                  Navigator.pushNamed(context, "/MoneyPage");
-                });
-              },
-              style: textStyle,
-            ),
-          ),
-          decoration: shape,
+        CustomDropDown(
+          items: globals.countrys,
+          value: _currentCountry,
+          hint: "Enviar dinero a",
+          callback: (_) {
+            this.setState((){
+              _currentCountry = _;
+              globals.country = _;
+              Navigator.pushNamed(context, "/MoneyPage");
+            });
+          }
         ),
         SignUp(),
-        Expanded(
-          child: Container(color: Colors.orange,),
-      )
       ])
     );
+  }
+
+  _init() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool sub = prefs.getBool('subscribed') ?? false;
+    if(!sub){
+      final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+      _firebaseMessaging.getToken().then((token){
+        _subscribe(token);
+      });
+    }
+  }
+
+  _subscribe(token) async {
+    final res = await http.get(globals.subscribeUrl + token);
+    if (res.statusCode == 200) {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      prefs.setBool("subscribed", true);
+    }
   }
 }
 

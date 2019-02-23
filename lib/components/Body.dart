@@ -18,8 +18,21 @@ class _MainBodyState extends State<MainBody> {
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             MainBanner(screenSize,),
-            SizedBox(height: 40.0,),
-          ]..addAll(widget.widgets)
+            Expanded(
+              child: ListView(
+                children: <Widget>[
+                  Padding(
+                    padding: EdgeInsets.all(40.0),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: widget.widgets,
+                    ),
+                  )
+                ],
+              )
+            )
+          ],
         ),
       ),
     );
