@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:remeflash/style.dart';
 import 'package:remeflash/globals.dart' as globals;
 import 'package:remeflash/components/AppBar.dart';
 import 'package:remeflash/components/Body.dart';

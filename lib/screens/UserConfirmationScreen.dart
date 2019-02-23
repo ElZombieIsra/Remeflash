@@ -78,7 +78,7 @@ class _UserConfirmationScreenState extends State<UserConfirmationScreen> {
           text: "Finalizar",
           color: Color.fromRGBO(231, 129, 47, 1.0),
           callback: (){
-            Navigator.pushNamed(context, "/ConfirmationPage"); // TODO: Change to Replacement
+            Navigator.pushNamed(context, "/ConfirmationPage");
           },
         )
       ]),

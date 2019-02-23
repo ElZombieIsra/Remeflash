@@ -53,7 +53,7 @@ class _LoaderScreenState extends State<LoaderScreen> {
                     MainButton(
                       text: "Comenzar",
                       callback: (){
-                        Navigator.of(context).pushNamed("/HomePage"); // TODO: Change to pushReplacement
+                        Navigator.of(context).pushReplacementNamed("/HomePage");
                       },
                     )
                   ],
