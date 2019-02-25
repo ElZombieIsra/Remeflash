@@ -5,7 +5,13 @@ ThemeData appTheme = new ThemeData(
   hintColor: Colors.black45,
 );
 
-TextStyle textStyle = const TextStyle(
+TextStyle bannerStyle = TextStyle(
+  color: Colors.black54,
+  fontSize: 20.0,
+  fontWeight: FontWeight.w300,
+);
+
+TextStyle textStyle = TextStyle(
   color: Colors.black54,
   fontSize: 16.0,
   fontWeight: FontWeight.w300,

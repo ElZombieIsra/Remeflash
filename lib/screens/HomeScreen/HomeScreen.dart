@@ -42,7 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
           }
         ),
         SignUp(),
-      ])
+      ], 
+      hasBackground: true,
+      )
     );
   }
 
@@ -81,7 +83,7 @@ class MainBanner extends StatelessWidget {
             width: screenSize.width / 2,
             child: Text(
               "Envía dinero internacionalmente",
-              style: textStyle,
+              style: bannerStyle,
               textAlign: TextAlign.center,
             ),
           )

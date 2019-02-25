@@ -7,6 +7,8 @@ import 'package:remeflash/components/MainDrawer.dart';
 import 'package:remeflash/components/Buttons/MainButtons.dart';
 import 'package:flutter_masked_text/flutter_masked_text.dart';
 
+import 'package:remeflash/custom_icons_icons.dart';
+
 
 class PaymentDataScreen extends StatefulWidget {
   _PaymentDataScreenState createState() => _PaymentDataScreenState();
@@ -39,7 +41,7 @@ class _PaymentDataScreenState extends State<PaymentDataScreen> {
         CustomInput(
           controller: _controllerCard,
           hint: "Número de tarjeta",
-          icon: Icon(Icons.camera_alt),
+          icon: Icon(CustomIcons.camera),
           keyboardType: TextInputType.number,
         ),
         CustomInput(

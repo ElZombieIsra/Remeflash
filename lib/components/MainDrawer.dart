@@ -13,12 +13,22 @@ class _MainDrawerState extends State<MainDrawer> {
         padding: EdgeInsets.zero,
         children: <Widget>[
           DrawerHeader(
-            child: Text("${globals.title}"),
+            child: Text(
+              "${globals.title}",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20.0
+              ),
+            ),
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor
+            ),
           ),
           ListTile(
-            title: Text("Some option"),
+            title: Text("Inicio"),
             onTap: (){
               Navigator.pop(context);
+              Navigator.pushNamedAndRemoveUntil(context, "/LoadPage", (_) => false);
             },
           )
         ],

@@ -33,10 +33,9 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
       appBar: mainAppBar(),
       drawer: MainDrawer(),
       body: MainBody(<Widget>[
-        Icon(
-          Icons.done,
-          color: Theme.of(context).primaryColor,
-          size: 100.0,
+        Padding(
+          padding: EdgeInsets.fromLTRB(100.0, 10.0, 100.0, 40.0),
+          child: Image.asset("assets/images/8.png"),
         ),
         Text(
           "¡Felicidades!",

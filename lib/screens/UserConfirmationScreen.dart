@@ -23,16 +23,9 @@ class _UserConfirmationScreenState extends State<UserConfirmationScreen> {
           "Confirmación",
           style: titleStyle
         ),
-        RotationTransition(
-          turns: AlwaysStoppedAnimation(-30 / 360),
-          child: Padding(
-            padding: EdgeInsets.all(20.0),
-            child: Icon(
-              Icons.send,
-              color: Color.fromRGBO(255, 207, 73, 1.0),
-              size: 100.0,
-            ),
-          ),
+        Padding(
+          child: Image.asset("assets/images/2.png"),
+          padding: EdgeInsets.fromLTRB(80.0, 40.0, 80.0, 20.0),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,

@@ -3,7 +3,10 @@ import 'package:remeflash/screens/HomeScreen/HomeScreen.dart';
 
 class MainBody extends StatefulWidget {
   final widgets;
-  MainBody(this.widgets);
+  final bool hasBackground;
+  MainBody(this.widgets, {
+    this.hasBackground = false,
+  });
   _MainBodyState createState() => _MainBodyState();
 }
 
@@ -31,7 +34,8 @@ class _MainBodyState extends State<MainBody> {
                   )
                 ],
               )
-            )
+            ),
+            widget.hasBackground ? Image.asset("assets/images/background.png") : Container(),
           ],
         ),
       ),
