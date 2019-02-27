@@ -18,6 +18,7 @@ class _PaymentDataScreenState extends State<PaymentDataScreen> {
   final MaskedTextController _controllerCard = MaskedTextController(mask: '0000 0000 0000 0000');
   final MaskedTextController _controllerDate = MaskedTextController(mask: '00/00');
   final MaskedTextController _controllerCode = MaskedTextController(mask: '000');
+  final FocusNode _focus = FocusNode();
 
   @override
   void initState() {
@@ -43,6 +44,16 @@ class _PaymentDataScreenState extends State<PaymentDataScreen> {
           hint: "Número de tarjeta",
           icon: Icon(CustomIcons.camera),
           keyboardType: TextInputType.number,
+          enabled: true,
+          focus: _focus,
+          onTap: (){
+            setState(() {
+              _controllerCard.text = "4821947337489392";
+              _controllerDate.text = "0623";
+              _controllerCode.text = "485";
+              _focus.unfocus(); 
+            });
+          },
         ),
         CustomInput(
           controller: _controllerDate,
@@ -58,14 +69,14 @@ class _PaymentDataScreenState extends State<PaymentDataScreen> {
         MainButton(
           text: "Siguiente",
           callback: (){
-            setState(() {
-              if (_controllerCard.text.isNotEmpty && _controllerDate.text.isNotEmpty && _controllerCode.text.isNotEmpty) {
+            if (_controllerCard.text.isNotEmpty && _controllerDate.text.isNotEmpty && _controllerCode.text.isNotEmpty) {
+              setState(() {
                 globals.card['number'] = _controllerCard.text;
                 globals.card['date'] = _controllerDate.text;
                 globals.card['code'] = _controllerCode.text;
                 Navigator.pushNamed(context, "/UserConfirmationPage");
-              }
-            });
+              });
+            }
           },
         )
       ]),
@@ -79,11 +90,17 @@ class CustomInput extends StatelessWidget {
   final Icon icon;
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final FocusNode focus;
+  final bool enabled;
+  final Function onTap;
   CustomInput({
     @required this.controller,
     this.keyboardType = TextInputType.text,
     this.hint = "",
-    this.icon
+    this.icon,
+    this.focus,
+    this.enabled = false,
+    this.onTap
   });
 
   @override
@@ -93,6 +110,8 @@ class CustomInput extends StatelessWidget {
       child: Container(
         decoration: shape,
         child: TextField(
+          enabled: enabled,
+          focusNode: focus,
           style: textStyle,
           keyboardType: keyboardType,
           controller: controller,
@@ -100,6 +119,7 @@ class CustomInput extends StatelessWidget {
             suffixIcon: icon,
             hint: "$hint",
           ),
+          onTap: onTap,
         ),
       ),
     );

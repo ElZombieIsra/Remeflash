@@ -3,6 +3,7 @@ import 'package:remeflash/globals.dart' as globals;
 
 mainAppBar(){
   return AppBar(
+      //leading: Icon(Icons.dehaze),
       title: Padding(
         padding: EdgeInsets.only(left: 40.0),
         child: Text(
@@ -32,9 +33,9 @@ mainAppBar(){
                     fontWeight: FontWeight.w300
                   ),
                 ),
-                Image.network(
-                  "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png",
-                  scale: 18.0,
+                SizedBox(
+                  height: 10.0,
+                  child: Image.asset("assets/images/visa_blanco.png"),
                 )
               ],
             ),

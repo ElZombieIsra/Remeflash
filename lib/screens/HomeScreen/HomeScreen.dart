@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: MainDrawer(),
+      drawer: MainDrawer(), 
       appBar: mainAppBar(),
       body: MainBody([
         CustomDropDown(
@@ -34,11 +34,13 @@ class _HomeScreenState extends State<HomeScreen> {
           value: _currentCountry,
           hint: "Enviar dinero a",
           callback: (_) {
-            this.setState((){
-              _currentCountry = _;
-              globals.country = _;
-              Navigator.pushNamed(context, "/MoneyPage");
-            });
+            if(_ == "México"){
+              this.setState((){
+                _currentCountry = _;
+                globals.country = _;
+                Navigator.pushNamed(context, "/MoneyPage");
+              });
+            }
           }
         ),
         SignUp(),

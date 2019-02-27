@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:remeflash/style.dart';
+import 'package:remeflash/services/AnimationService.dart';
 
 class CustomDropDown extends StatefulWidget {
   final callback, value;
@@ -28,7 +29,7 @@ class _CustomDropDownState extends State<CustomDropDown> {
               child: Container(
                 padding: EdgeInsets.only(left: 10.0),
                 width: 200.0,
-                child: Text(value),
+                child: value == "México" ? AnimatedText(value) : Text(value),
               ),
             );
           }).toList(),

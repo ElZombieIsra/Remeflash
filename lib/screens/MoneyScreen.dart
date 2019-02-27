@@ -15,7 +15,8 @@ class MoneyScreen extends StatefulWidget {
 
 class _MoneyScreenState extends State<MoneyScreen> {
   String _currentCurrency = globals.currency ?? globals.currencys[0];
-  String _currentCurrency2 = globals.currency ?? globals.currencys[0];
+  String _currentCurrency2 = globals.currency ?? globals.currencys[1];
+  FocusNode _focus =FocusNode();
   final MoneyMaskedTextController _controller1 = MoneyMaskedTextController(
     leftSymbol: "\$",
     decimalSeparator: ".",
@@ -55,6 +56,14 @@ class _MoneyScreenState extends State<MoneyScreen> {
                   controller: _controller1,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
                   decoration: fieldDecoration(),
+                  focusNode: _focus,
+                  onTap: (){
+                    setState(() {
+                      _controller1.text = "400000";
+                      _controller2.text = "20860"; 
+                      _focus.unfocus();
+                    });
+                  },
                 ),
               ),
               Container(
@@ -62,21 +71,23 @@ class _MoneyScreenState extends State<MoneyScreen> {
                 margin: EdgeInsets.zero,
                 padding: EdgeInsets.only(left: 5.0, right: 5.0),
                 child: DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: _currentCurrency,
-                    items: globals.currencys.map((currency){
-                      return DropdownMenuItem(
-                        child: Text(currency, style: textStyle,),
-                        value: currency,
-                      );
-                    }).toList(),
-                    onChanged: (_){
-                      setState(() {
-                        _currentCurrency = _;
-                      });
-                    },
+                  child: IgnorePointer(
+                    child: DropdownButton(
+                      value: _currentCurrency,
+                      items: globals.currencys.map((currency){
+                        return DropdownMenuItem(
+                          child: Text(currency, style: textStyle,),
+                          value: currency,
+                        );
+                      }).toList(),
+                      onChanged: (_){
+                        setState(() {
+                          _currentCurrency = _;
+                        });
+                      },
+                    ),
                   ),
-                ),
+                )
               )
             ],
           ),
@@ -89,6 +100,7 @@ class _MoneyScreenState extends State<MoneyScreen> {
             children: <Widget>[
               Expanded(
                 child: TextField(
+                  enabled: false,
                   style: textStyle,
                   controller: _controller2,
                   keyboardType: TextInputType.numberWithOptions(decimal: true),
@@ -100,19 +112,21 @@ class _MoneyScreenState extends State<MoneyScreen> {
                 margin: EdgeInsets.zero,
                 padding: EdgeInsets.only(left: 5.0, right: 5.0),
                 child: DropdownButtonHideUnderline(
-                  child: DropdownButton(
-                    value: _currentCurrency2,
-                    items: globals.currencys.map((currency){
-                      return DropdownMenuItem(
-                        child: Text(currency, style: textStyle,),
-                        value: currency,
-                      );
-                    }).toList(),
-                    onChanged: (_){
-                      setState(() {
-                        _currentCurrency2 = _;
-                      });
-                    },
+                  child: IgnorePointer(
+                    child: DropdownButton(
+                      value: _currentCurrency2,
+                      items: globals.currencys.map((currency){
+                        return DropdownMenuItem(
+                          child: Text(currency, style: textStyle,),
+                          value: currency,
+                        );
+                      }).toList(),
+                      onChanged: (_){
+                        setState(() {
+                          _currentCurrency2 = _;
+                        });
+                      },
+                    ),
                   ),
                 ),
               )

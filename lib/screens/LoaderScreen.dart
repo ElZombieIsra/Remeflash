@@ -59,10 +59,10 @@ class _LoaderScreenState extends State<LoaderScreen> {
                           "Habilitado por ",
                           style: textStyle,
                         ),
-                        Image.network(
-                          "https://upload.wikimedia.org/wikipedia/commons/4/41/Visa_Logo.png",
-                          scale: 10.0,
-                        )
+                        SizedBox(
+                          height: 15.0,
+                          child: Image.asset("assets/images/visa_azul.png"),
+                        ),
                       ],
                     ),
                     SizedBox(height: 25.0,),
